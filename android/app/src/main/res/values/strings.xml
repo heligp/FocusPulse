@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">FocusPulse</string>
+    <string name="blocker_description">FocusPulse — Bloquea apps según las reglas que definas</string>
 </resources>
