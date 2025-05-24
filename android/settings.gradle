@@ -1,6 +1,27 @@
-pluginManagement { includeBuild("../node_modules/@react-native/gradle-plugin") }
-plugins { id("com.facebook.react.settings") }
-extensions.configure(com.facebook.react.ReactSettingsExtension){ ex -> ex.autolinkLibrariesFromCommand() }
-rootProject.name = 'FocusPulse'
-include ':app'
-includeBuild('../node_modules/@react-native/gradle-plugin')
+// android/settings.gradle
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+        // artefactos internos de React Native
+        maven { url("$rootDir/../node_modules/react-native/android") }
+    }
+    includeBuild("../node_modules/@react-native/gradle-plugin")
+}
+
+dependencyResolutionManagement {
+    // ←-- cambiamos a PREFER_SETTINGS
+    repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
+    repositories {
+        google()
+        mavenCentral()
+        maven { url("$rootDir/../node_modules/react-native/android") }
+
+        // Ejemplo extra: JitPack
+        // maven { url("https://jitpack.io") }
+    }
+}
+
+rootProject.name = "FocusPulse"
+include(":app")

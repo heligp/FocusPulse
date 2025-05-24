@@ -1,21 +1,14 @@
-buildscript {
-    ext {
-        buildToolsVersion = "35.0.0"
-        minSdkVersion = 24
-        compileSdkVersion = 35
-        targetSdkVersion = 35
-        ndkVersion = "27.1.12297006"
-        kotlinVersion = "2.0.21"
-    }
-    repositories {
-        google()
-        mavenCentral()
-    }
-    dependencies {
-        classpath("com.android.tools.build:gradle")
-        classpath("com.facebook.react:react-native-gradle-plugin")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin")
-    }
+// android/build.gradle  ─ top-level
+plugins {
+    id("com.android.application") version "8.2.2" apply false
+    id("com.android.library")    version "8.2.2" apply false
+    id("org.jetbrains.kotlin.android") version "1.9.22" apply false
+
+    // 👇  Hace que el plugin React Native registre las tareas globales
+    id("com.facebook.react") 
 }
 
-apply plugin: "com.facebook.react.rootproject"
+// Tarea utilitaria para limpiar
+tasks.register("clean", Delete) {
+    delete(rootProject.buildDir)
+}

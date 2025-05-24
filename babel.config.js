@@ -22,6 +22,6 @@ module.exports = {
         ],
       },
     ],
-    // otros plugins que necesites…
+    'react-native-reanimated/plugin',
   ],
 };

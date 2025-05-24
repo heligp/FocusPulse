@@ -1,7 +1,7 @@
 // src/hooks/useRules.ts
 import create from 'zustand';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import Blocker from '../services/blockerModule';
+import Blocker from '../services/blocker';
 
 export type Rule = {
   id: string;

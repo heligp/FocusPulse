@@ -2,7 +2,7 @@
 import React, {useEffect} from 'react';
 import {Alert, Platform} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {createStackNavigator} from '@react-navigation/stack';
 import {NativeEventEmitter, NativeModules} from 'react-native';
 import tips from './services/tips';
 
@@ -14,7 +14,7 @@ type RootStackParamList = {
   AddRule: undefined;
 };
 
-const Stack = createNativeStackNavigator<RootStackParamList>();
+const Stack = createStackNavigator<RootStackParamList>();
 
 export default function App() {
   // listener general para eventos BLOCKED_APP
