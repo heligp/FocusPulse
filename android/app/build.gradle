@@ -1,50 +1,38 @@
-// android/app/build.gradle
+// android/app/build.gradle  (módulo :app)
+
 plugins {
-    id "com.android.application"   // Android Gradle Plugin (AGP)
-    id "com.facebook.react"        // React Native Gradle Plugin
+    id "com.android.application"
+    id "com.facebook.react"        // plugin aplicado aquí
     id "org.jetbrains.kotlin.android"
 }
 
+/* 👇  La extensión *SIEMPRE* va *fuera* de plugins { } */
+react {
+    autolinkLibrariesWithApp()     // indica que PackageList pertenece a :app
+}
+
 android {
-    namespace       "com.focuspulse"   // cambia si tu paquete Java es otro
-    compileSdk      34                 // RN 0.79 soporta hasta 34 estable
-
+    namespace "com.focuspulse"
+    compileSdk 34
     defaultConfig {
-        applicationId       "com.focuspulse"
-        minSdk              24
-        targetSdk           34
-        versionCode         1
-        versionName         "1.0"
-        vectorDrawables {
-            useSupportLibrary true
-        }
+        applicationId "com.focuspulse"
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
     }
-
     buildTypes {
-        debug {
-            applicationIdSuffix ".debug"
-            debuggable true
-        }
         release {
-            // Optimización estándar
-            minifyEnabled   true
+            minifyEnabled true
             shrinkResources true
             proguardFiles getDefaultProguardFile("proguard-android.txt"),
                           "proguard-rules.pro"
         }
     }
-
-    // Opcional: evita colisiones de libc++ en algunos devices
-    packagingOptions {
-        resources.pickFirsts += ["**/libc++_shared.so"]
-    }
 }
 
 dependencies {
-    // BOM = asegura versiones coherentes de los artefactos React Native
     implementation platform("com.facebook.react:react-native-bom:+")
     implementation "com.facebook.react:react-native"
-
-    // Kotlin estándar (la versión exacta la controla el BOM de RN)
     implementation "org.jetbrains.kotlin:kotlin-stdlib"
 }

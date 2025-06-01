@@ -1,25 +1,28 @@
-// android/settings.gradle
 pluginManagement {
     repositories {
         gradlePluginPortal()
         google()
         mavenCentral()
-        // artefactos internos de React Native
         maven { url("$rootDir/../node_modules/react-native/android") }
     }
     includeBuild("../node_modules/@react-native/gradle-plugin")
 }
 
+plugins {                 // activa el plugin de ajustes
+    id("com.facebook.react.settings")
+}
+
+/* Genera autolinking.json cada build */
+extensions.configure(com.facebook.react.ReactSettingsExtension) { ex ->
+    ex.autolinkLibrariesFromCommand()
+}
+
 dependencyResolutionManagement {
-    // ←-- cambiamos a PREFER_SETTINGS
     repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
     repositories {
         google()
         mavenCentral()
         maven { url("$rootDir/../node_modules/react-native/android") }
-
-        // Ejemplo extra: JitPack
-        // maven { url("https://jitpack.io") }
     }
 }
 
