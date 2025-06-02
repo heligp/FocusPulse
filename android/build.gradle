@@ -1,20 +1,20 @@
-// android/build.gradle  – top-level
 plugins {
-    id("com.android.application") version "8.2.2" apply false
-    id("com.android.library")    version "8.2.2" apply false
-    id("org.jetbrains.kotlin.android") version "1.9.22" apply false
-    id("com.facebook.react")                             // ← permanece aplicado
-}
+    id("com.android.application") version "8.8.2" apply false
+    id("com.android.library")    version "8.8.2" apply false
+    id("org.jetbrains.kotlin.android") version "1.9.24" apply false
 
-/*  🔧 VARIABLES que necesitan los módulos nativos heredados  */
+    // 👇  aquí lo declaras…
+    id("com.facebook.react") version "+"          // NO uses apply false
+}
+apply plugin: "com.facebook.react"                // …y aquí lo aplicas
+
+
 ext {
-    compileSdkVersion = 34
-    targetSdkVersion  = 34
-    minSdkVersion     = 24
+  compileSdkVersion = 34
+  targetSdkVersion  = 34
+  minSdkVersion     = 24
 }
 
-tasks.register("clean", Delete) { delete(rootProject.buildDir) }
-afterEvaluate {
-    tasks.matching { it.name.startsWith("prepareReanimatedHeadersForPrefabs") }
-        .configureEach { doNotTrackState("Win + Gradle 8 work-around") }
+tasks.register("clean", Delete) {
+  delete(rootProject.buildDir)
 }

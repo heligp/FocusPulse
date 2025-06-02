@@ -1,4 +1,0 @@
-react
-react-native
-react-native-device-info
-zustand

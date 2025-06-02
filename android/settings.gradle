@@ -4,8 +4,10 @@ pluginManagement {
         google()
         mavenCentral()
         maven { url("$rootDir/../node_modules/react-native/android") }
+
     }
     includeBuild("../node_modules/@react-native/gradle-plugin")
+    
 }
 
 plugins {                 // activa el plugin de ajustes
@@ -18,13 +20,14 @@ extensions.configure(com.facebook.react.ReactSettingsExtension) { ex ->
 }
 
 dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
+    repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)   // no FAIL mientras depuras
     repositories {
-        google()
         mavenCentral()
-        maven { url("$rootDir/../node_modules/react-native/android") }
+        google()
+        maven { url "$rootDir/../node_modules/react-native/android" }   // repo local de RN
     }
 }
+
 
 rootProject.name = "FocusPulse"
 include(":app")
