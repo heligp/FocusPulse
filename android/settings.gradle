@@ -1,3 +1,4 @@
+//settings.gradle
 pluginManagement {
     repositories {
         gradlePluginPortal()
@@ -20,7 +21,7 @@ extensions.configure(com.facebook.react.ReactSettingsExtension) { ex ->
 }
 
 dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)   // no FAIL mientras depuras
+    repositoriesMode.set(RepositoriesMode.PREFER_PROJECT)   // no FAIL mientras depuras
     repositories {
         mavenCentral()
         google()
